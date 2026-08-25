@@ -7,6 +7,18 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void Nivel1()
+    {
+        SceneManager.LoadScene("Nivel 1");
+    }
+    public void Nivel2()
+    {
+        SceneManager.LoadScene("Nivel 2");
+    }
+    public void Nivel3()
+    {
+        SceneManager.LoadScene("Nivel 3");
+    }
     public void Quit()
     {
         Application.Quit();

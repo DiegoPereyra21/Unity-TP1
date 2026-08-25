@@ -26,4 +26,8 @@ public class ProjectileEnemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+    public void SetDamage(float amount)
+    {
+        damage = amount;
+    }
 }

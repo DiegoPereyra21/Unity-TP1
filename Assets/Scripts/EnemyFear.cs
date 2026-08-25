@@ -6,6 +6,7 @@ public class EnemyFear : MonoBehaviour
     public GameObject enemyProjectile;
     public float fireRate = 2f;
     [SerializeField] private float speed = 1.5f;
+    [SerializeField] private float projectileDamage = 12f;
     private Transform transformPlayer;
 
     [SerializeField] private Transform player;
@@ -25,7 +26,9 @@ public class EnemyFear : MonoBehaviour
 
         if (Time.time >= nextFire)
         {
-            Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
+            GameObject Projectile = Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
+            //para la consigna de que tengan mas daño segun el nivel, hasta ahora solo cambiaba el firerate pero no esta en la consigna
+            Projectile.GetComponent<ProjectileEnemy>().SetDamage(projectileDamage);
             nextFire = Time.time + fireRate;
         }
     }
