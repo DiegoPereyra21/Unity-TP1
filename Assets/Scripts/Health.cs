@@ -27,7 +27,6 @@ public class Health : MonoBehaviour
             if (CompareTag("Player"))
             {
                 gameManager.PlayerDie();
-                Debug.Log("You Die!");
 
             }
             else

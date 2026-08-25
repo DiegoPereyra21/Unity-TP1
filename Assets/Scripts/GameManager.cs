@@ -4,30 +4,29 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int enemiesToKill = 3;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private float timer = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
     }
 
     public void EnemyDie()
     {
         enemiesToKill--;
+        Debug.Log("ENEMIGOS RESTANTES: " + enemiesToKill);//Debug mas importante creo yo
         if (enemiesToKill<=0)
         {
+            Debug.Log("VICTORIA EN " + timer.ToString());
             NextLvl();
         }
-        Debug.Log("ENEMIGOS RESTANTES: " + enemiesToKill);//Debug mas importante creo yo
+
     }
 
     public void PlayerDie()
     {
+        Debug.Log("TIEMPO QUE SOBREVIVISTE: "+ timer.ToString());
         lose();
     }
 
