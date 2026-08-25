@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab79b6ff3c31c54c9e479a6fdde0aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 5
+  speed: 7
   firePoint: {fileID: 8083839113678448973}
   projectile1: {fileID: 3953537278196981813, guid: 7b5b4ec2d9b474445a19a9822326d897, type: 3}
   projectile2: {fileID: 3439398924212837277, guid: 33442abca7448104e917b7714f8832f7, type: 3}
