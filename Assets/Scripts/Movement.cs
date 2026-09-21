@@ -44,5 +44,30 @@ public class PlayerController : MonoBehaviour
 
         if (dir != Vector3.zero)
             transform.forward = dir;
+
+        Aim();
+    }
+    private void FixedUpdate()
+    {
+        if (dir != Vector3.zero)//buena practica q estos calculos sean en fixedupdate
+        {
+            transform.forward = dir;
+        }
+    }
+    //para que apunte directamente al puntero, se sentia muy tosco el disparo antes
+    void Aim()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane ground = new Plane(Vector3.up, Vector3.zero);
+
+        if (ground.Raycast(ray, out float dist))
+        {
+            Vector3 point = ray.GetPoint(dist);
+            Vector3 lookDir = point - transform.position;
+            lookDir.y = 0f;
+
+            if (lookDir != Vector3.zero)
+                transform.forward = lookDir;
+        }
     }
 }
