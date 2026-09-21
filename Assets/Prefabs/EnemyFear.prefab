@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e37c3efcfe35c4ea3c38a194de67b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  gameManager: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &9162535208485780861
@@ -206,8 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFear
   firePoint: {fileID: 1665346562601065691}
   enemyProjectile: {fileID: 2239900642915309621, guid: b9154b096fdf3cf46842389f11760bbe, type: 3}
-  fireRate: 2
+  fireRate: 2.2
   speed: 1.5
+  projectileDamage: 12
   player: {fileID: 0}
 --- !u!1 &9092272834117848651
 GameObject:

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public GameManager gameManager;
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private float currentHealth;
     //tuve que agregarlo porque aveces tiraba el log -20 de vida
@@ -11,35 +10,29 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         //la consigna lo pide
         Debug.Log("VIDA INICIAL: " + currentHealth);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void TakeDamage(float amount)
     {
-        if (isDead) return;//para q deje de recibir daño si ya murio, iba a hacer una especie de ragdoll pero mejor no
+        if (isDead) return;//para q deje de recibir daño si ya murio
 
         currentHealth -= amount;
         Debug.Log("VIDA ACTUAL: " + currentHealth);
 
-        if (currentHealth <= 0 )
+        if (currentHealth <= 0)
         {
             isDead = true;
+            //el GameManager ahora es singleton persistente, ya no hace falta buscarlo por tag
+
             if (CompareTag("Player"))
             {
-                gameManager.PlayerDie();
-
+                GameManager.Instance.PlayerDie();
             }
             else
             {
-                //Debug.Log("Enemy Die!"); lo quito porque el gamemanager ya muestra el enemigos restantes
-                gameManager.EnemyDie();
+                GameManager.Instance.EnemyDie();
                 Destroy(gameObject);
             }
         }

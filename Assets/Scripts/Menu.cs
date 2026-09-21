@@ -27,4 +27,13 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+    //agregados para el segundo tp
+    public void RestartLevel()
+    {
+        GameManager.Instance.RestartLevel();
+    }
+    public void NextLevel()
+    {
+        GameManager.Instance.GoToNextLevel();
+    }
 }
