@@ -47,13 +47,6 @@ public class PlayerController : MonoBehaviour
 
         Aim();
     }
-    private void FixedUpdate()
-    {
-        if (dir != Vector3.zero)//buena practica q estos calculos sean en fixedupdate
-        {
-            transform.forward = dir;
-        }
-    }
     //para que apunte directamente al puntero, se sentia muy tosco el disparo antes
     void Aim()
     {
