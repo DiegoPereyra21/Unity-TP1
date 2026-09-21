@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject tutorialPanel;
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -35,5 +37,16 @@ public class Menu : MonoBehaviour
     public void NextLevel()
     {
         GameManager.Instance.GoToNextLevel();
+    }
+    //para la consiga de agregar tutorial en el menu de inicio
+    public void ShowTutorial()
+    {
+        mainMenuPanel.SetActive(false);
+        tutorialPanel.SetActive(true);
+    }
+    public void HideTutorial()//boton volver del tutorial, deja el menu como estaba
+    {
+        tutorialPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 }
