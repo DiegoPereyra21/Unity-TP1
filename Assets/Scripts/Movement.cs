@@ -14,10 +14,12 @@ public class PlayerController : MonoBehaviour
     private float nextShootProjectile2 = 0f;
     private Rigidbody rb;
     private Vector3 dir;
+    private Camera mainCam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mainCam = Camera.main;//se busca una sola vez en vez de cada frame en Aim()
     }
     // Update is called once per frame
     void Update()
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
     //para que apunte directamente al puntero, se sentia muy tosco el disparo antes
     void Aim()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, Vector3.zero);
 
         if (ground.Raycast(ray, out float dist))

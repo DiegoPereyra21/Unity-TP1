@@ -17,6 +17,13 @@ public class EnemySeeker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //seguridad x si nos olvidamos algo
+        if (player == null || firePoint == null || enemyProjectile == null)
+        {
+            Debug.LogWarning(name + " faltan referencias");
+            enabled = false;
+            return;
+        }
         transformPlayer = player.transform;
         nextFire = Time.time + startDelay;
     }

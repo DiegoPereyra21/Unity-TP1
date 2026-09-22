@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProjectileEnemy : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed = 15f;
     [SerializeField] private float damage = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,7 +14,7 @@ public class ProjectileEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0,0,speed + Time.deltaTime);
+        transform.Translate(0, 0, speed * Time.deltaTime);//para q escale bien con los frames
     }
     void OnTriggerEnter(Collider other)
     {

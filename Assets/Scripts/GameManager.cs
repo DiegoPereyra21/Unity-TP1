@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private bool isLastLevel;
     private int currentLevelIndex;
     private float timer = 0f;
+    private bool levelEnded = false;//para que no se cargue la escena dos veces si pasa algo el mismo frame(muere 2 enemigos al mismo tiemepo o algo raro)
 
     void Awake()
     {
@@ -35,14 +36,17 @@ public class GameManager : MonoBehaviour
         isLastLevel = lastLevel;
         currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         timer = 0f;
+        levelEnded = false;
     }
 
     public void EnemyDie()
     {
+        if (levelEnded) return;
         enemiesToKill--;
         Debug.Log("ENEMIGOS RESTANTES: " + enemiesToKill);//Debug mas importante creo yo
         if (enemiesToKill <= 0)
         {
+            levelEnded = true;
             Debug.Log("VICTORIA EN " + timer.ToString());
             win();
         }
@@ -50,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDie()
     {
+        if (levelEnded) return;
+        levelEnded = true;
         Debug.Log("TIEMPO QUE SOBREVIVISTE: " + timer.ToString());
         lose();
     }
