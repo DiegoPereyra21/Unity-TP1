@@ -13,6 +13,8 @@ public class EnemyRandom : MonoBehaviour
     [SerializeField] private float projectileDamage = 12f;
 
     [SerializeField] private Transform player;
+
+    [SerializeField] private float startDelay = 1.5f;//para que no disparen apenas aparecen
     private float nextFire;
 
     private Vector3 moveDir;
@@ -23,6 +25,7 @@ public class EnemyRandom : MonoBehaviour
         transformPlayer = player.transform;
         PickNewDirection();
         SetNextChangeTime();
+        nextFire = Time.time + startDelay;
     }
     // Update is called once per frame
     void Update()

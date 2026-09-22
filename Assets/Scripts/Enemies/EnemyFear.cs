@@ -10,11 +10,14 @@ public class EnemyFear : MonoBehaviour
     private Transform transformPlayer;
 
     [SerializeField] private Transform player;
+
+    [SerializeField] private float startDelay = 1.5f;//para que no disparen apenas aparecen
     private float nextFire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transformPlayer = player.transform;
+        nextFire = Time.time + startDelay;
     }
     // Update is called once per frame
     void Update()

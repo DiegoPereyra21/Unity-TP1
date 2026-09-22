@@ -4,6 +4,7 @@ public class EnemyController : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject enemyProjectile;
+    [SerializeField] private float startDelay = 1.5f;//para que no disparen apenas aparecen
     public float fireRate = 2f;
     private Transform transformPlayer;
     [SerializeField] private float projectileDamage = 12f;
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         transformPlayer = player.transform;
+        nextFire = Time.time + startDelay;
     }
     // Update is called once per frame
     void Update()
