@@ -187,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4082312761560736954, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: projectileDamage
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5644617367336695904, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: gameManager
@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4457793607039446493, guid: 2538bc0d77f02fd458465650290be935, type: 3}
       propertyPath: projectileDamage
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5644617367336695904, guid: 2538bc0d77f02fd458465650290be935, type: 3}
       propertyPath: gameManager
@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4082312761560736954, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: projectileDamage
-      value: 14
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5644617367336695904, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: gameManager

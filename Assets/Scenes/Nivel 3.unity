@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 285055230}
     - target: {fileID: 4082312761560736954, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: projectileDamage
-      value: 21
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5644617367336695904, guid: 5d3879876518d924e9e4b53136a12824, type: 3}
       propertyPath: gameManager
@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 285196425}
     - target: {fileID: -2500358852244144848, guid: c1cfc86dca72c6c4daaaf6a170fa4a46, type: 3}
       propertyPath: projectileDamage
-      value: 21
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5824660497742953871, guid: c1cfc86dca72c6c4daaaf6a170fa4a46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1652,7 +1652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162535208485780861, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
       propertyPath: projectileDamage
-      value: 21
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
