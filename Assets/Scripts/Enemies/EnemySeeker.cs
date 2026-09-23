@@ -14,6 +14,9 @@ public class EnemySeeker : MonoBehaviour
 
     [SerializeField] private Transform player;
     private float nextFire;
+    //para el sonido de la bola de fuego
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] fireballSounds;//f1,f2,f3, uno al azar por disparo para que no suene repetitivo
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +42,7 @@ public class EnemySeeker : MonoBehaviour
             GameObject Projectile = Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
             //para la consigna de que tengan mas daño segun el nivel, hasta ahora solo cambiaba el firerate pero no esta en la consigna
             Projectile.GetComponent<ProjectileEnemy>().SetDamage(projectileDamage);
+            audioSource.PlayOneShot(fireballSounds[Random.Range(0, fireballSounds.Length)]);//sonido de la bola de fuego
             nextFire = Time.time + fireRate;
         }
     }

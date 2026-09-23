@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 dir;
     private Camera mainCam;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] fireballSounds1;//para el disparo 1
+    [SerializeField] private AudioClip[] fireballSounds2;//para el disparo 2
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,12 +37,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time >= nextShootProjectile1)
         {
             Instantiate(projectile1, firePoint.position, firePoint.rotation);
+            audioSource.PlayOneShot(fireballSounds1[Random.Range(0, fireballSounds1.Length)]);
             nextShootProjectile1 = Time.time + cdProjectile1;
         }
             
         if (Input.GetMouseButtonDown(1)&& Time.time >= nextShootProjectile2)
         {
             Instantiate(projectile2, firePoint.position, firePoint.rotation);
+            audioSource.PlayOneShot(fireballSounds2[Random.Range(0, fireballSounds2.Length)]);
             nextShootProjectile2 = Time.time + cdProjectile2;
         }
 
