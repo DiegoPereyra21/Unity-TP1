@@ -217,6 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   currentHealth: 0
+  hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
+  enemyDeathSound: {fileID: 0}
 --- !u!82 &5507304908938753408
 AudioSource:
   m_ObjectHideFlags: 0

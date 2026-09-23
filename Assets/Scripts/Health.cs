@@ -6,6 +6,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float currentHealth;
     //tuve que agregarlo porque aveces tiraba el log -20 de vida
     private bool isDead = false;
+    //sonido de hit
+    [SerializeField] private AudioClip hitSound;//mismo sonido para player y enemigos
+    [SerializeField] private AudioClip enemyDeathSound;//solo para cuando muere un enemigo
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,11 +23,12 @@ public class Health : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log("VIDA ACTUAL: " + currentHealth);
+        AudioSource.PlayClipAtPoint(hitSound, transform.position);//asi el sonido no se corta aunque el objeto se destruya despues
 
         if (currentHealth <= 0)
         {
             isDead = true;
-            //el GameManager ahora es singleton persistente, ya no hace falta buscarlo por tag
+            //elgamemanager ahora es singleton, ya no hace falta buscarlo por tag
 
             if (CompareTag("Player"))
             {
@@ -32,6 +36,7 @@ public class Health : MonoBehaviour
             }
             else
             {
+                AudioSource.PlayClipAtPoint(enemyDeathSound, transform.position);
                 GameManager.Instance.EnemyDie();
                 Destroy(gameObject);
             }
