@@ -23,8 +23,7 @@ public class Health : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log("VIDA ACTUAL: " + currentHealth);
-        AudioSource.PlayClipAtPoint(hitSound, transform.position);//asi el sonido no se corta aunque el objeto se destruya despues
-
+        PlaySound(hitSound);//asi el sonido no se corta aunque el objeto se destruya despues
         if (currentHealth <= 0)
         {
             isDead = true;
@@ -36,10 +35,20 @@ public class Health : MonoBehaviour
             }
             else
             {
-                AudioSource.PlayClipAtPoint(enemyDeathSound, transform.position);
+                PlaySound(enemyDeathSound);
                 GameManager.Instance.EnemyDie();
                 Destroy(gameObject);
             }
         }
+    }
+
+    //necesario, no se escuchaba con el 3d, con esto aunque el enemigo muera dejara el sonido y se escuchara bien
+    void PlaySound(AudioClip clip)
+    {
+        GameObject temp = new GameObject("TempAudio");
+        AudioSource src = temp.AddComponent<AudioSource>();
+        src.clip = clip;
+        src.Play();
+        Destroy(temp, clip.length);
     }
 }
