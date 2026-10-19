@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,20 +37,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f) return;//en pausa no gira ni dispara
+
         //input viejo, a futuro cambiar al actual 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         dir = new Vector3(h, 0f, v).normalized;
         anim.SetBool("isWalking", dir != Vector3.zero);
 
+        //para q no dispare si apretas algun boton
+        bool overUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+
         //me complique con el temporizador, use el mismo q en enemy
-        if (Input.GetMouseButtonDown(0) && Time.time >= nextShootProjectile1)
+        if (Input.GetMouseButtonDown(0) && Time.time >= nextShootProjectile1 && !overUI)
         {
             Shoot(projectile1, fireballSounds1);
             nextShootProjectile1 = Time.time + cdProjectile1;
         }
 
-        if (Input.GetMouseButtonDown(1) && Time.time >= nextShootProjectile2)
+        if (Input.GetMouseButtonDown(1) && Time.time >= nextShootProjectile2 && !overUI)
         {
             Shoot(projectile2, fireballSounds2);
             nextShootProjectile2 = Time.time + cdProjectile2;

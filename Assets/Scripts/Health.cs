@@ -31,6 +31,12 @@ public class Health : MonoBehaviour
         return currentHealth / maxHealth;
     }
 
+    //para mostrar la vida en el Hud
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
     public void TakeDamage(float amount)
     {
         if (isDead) return;//para q deje de recibir daño si ya murio

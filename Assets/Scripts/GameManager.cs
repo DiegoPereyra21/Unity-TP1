@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         timer = 0f;
         levelEnded = false;
+        Time.timeScale = 1f;//por si se llego al nivel desde una pausa que no arranque congelado
     }
 
     public void EnemyDie()
@@ -82,5 +83,16 @@ public class GameManager : MonoBehaviour
     public void GoToNextLevel()
     {
         SceneManager.LoadScene(currentLevelIndex + 1);
+    }
+
+    //los usa el Hud para mostrar los datos en pantalla, ya tenia todo preparado para ui para cuando pidieran
+    public int GetEnemiesLeft()
+    {
+        return enemiesToKill;
+    }
+
+    public float GetTimer()
+    {
+        return timer;
     }
 }
