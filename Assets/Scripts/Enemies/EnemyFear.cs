@@ -32,6 +32,8 @@ public class EnemyFear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return;//si el player murio y se destruyo, que no tire error buscandolo
+
         transform.LookAt(transformPlayer);
         //logica para que se aleje lentamente
         Vector3 fleeTarget = transform.position + (transform.position - player.position);

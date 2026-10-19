@@ -40,6 +40,8 @@ public class EnemyRandom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return;//si el player murio y se destruyo, que no tire error buscandolo
+
         transform.LookAt(transformPlayer);
 
         //cada tanto (random) cambia de lado, el mas impredecible de los 4

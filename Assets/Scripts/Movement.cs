@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile1;
     //aparte de daño y tamaño del projectile 2, debo hacerle otra particularidad
     [SerializeField] private GameObject projectile2;
-    [SerializeField] private float cdProjectile1 = 0.25f;
+    [SerializeField] private float cdProjectile1 = 0.45f;//la consigna del parcial pide minimo .4 de minimo
     [SerializeField] private float cdProjectile2 = 1.5f;
     private float nextShootProjectile1 = 0f;
     private float nextShootProjectile2 = 0f;

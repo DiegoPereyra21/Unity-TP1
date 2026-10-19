@@ -33,6 +33,8 @@ public class EnemySeeker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return;//si el player murio y se destruyo, que no tire error buscandolo3
+
         transform.LookAt(transformPlayer);
         //logica para q se acerque
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);

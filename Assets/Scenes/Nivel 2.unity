@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19a1a92978e62f4491741c1d9697bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelConfig
-  enemiesToKill: 3
+  enemiesToKill: 4
   isLastLevel: 0
 --- !u!4 &18420804
 Transform:
@@ -3059,6 +3059,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 923187992966107211, guid: d13043ce3cee1e8459e7deaa2c274c32, type: 3}
   m_PrefabInstance: {fileID: 1569611322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1590258973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5644617367336695904, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.12663381
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0008347922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9919112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00868776
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -165.447
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824660497742953871, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.221
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365398167094144690, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: m_Name
+      value: EnemyFear
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535208485780861, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535208485780861, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: fireRate
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162535208485780861, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
+      propertyPath: projectileDamage
+      value: 25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0027b3b6ee8db4f4a8abba08a2282b7a, type: 3}
 --- !u!1001 &1594349277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3477,7 +3550,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 948358f2c5542b04689e9ba1753a54f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.095
   m_Pitch: 1.12
   Loop: 1
   Mute: 0
@@ -4219,3 +4292,4 @@ SceneRoots:
   - {fileID: 387297482}
   - {fileID: 263332294}
   - {fileID: 1876058233}
+  - {fileID: 1590258973}
