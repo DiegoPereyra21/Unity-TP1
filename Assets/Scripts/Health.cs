@@ -19,6 +19,12 @@ public class Health : MonoBehaviour
         Debug.Log(name + " VIDA INICIAL: " + currentHealth);
     }
 
+    //lo usa el EnemyFear paara huir si le queda poca vida, luego vere si agrego algo parecido con enemy seeker para que se mueva mas rapido si tiene poca vida
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth;
+    }
+
     public void TakeDamage(float amount)
     {
         if (isDead) return;//para q deje de recibir daño si ya murio

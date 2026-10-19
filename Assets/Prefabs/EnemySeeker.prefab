@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5644617367336695904}
   - component: {fileID: 4082312761560736954}
   - component: {fileID: 6294612266097918705}
+  - component: {fileID: 6690392754124250703}
   m_Layer: 7
   m_Name: EnemySeeker
   m_TagString: Untagged
@@ -175,7 +176,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -194,7 +195,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
+  deathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
 --- !u!114 &4082312761560736954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   startDelay: 1.5
   fireRate: 2.7
   speed: 1.5
+  stopDistance: 5
   projectileDamage: 12
   player: {fileID: 0}
   audioSource: {fileID: 6294612266097918705}
@@ -315,6 +317,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &6690392754124250703
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365398167094144690}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &9092272834117848651
 GameObject:
   m_ObjectHideFlags: 0

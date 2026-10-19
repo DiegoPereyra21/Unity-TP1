@@ -194,7 +194,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
+  deathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
 --- !u!114 &9162535208485780861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,11 +207,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e751e951f5e7f6448ceac9c74cc4be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFear
+  currentState: 0
   firePoint: {fileID: 1665346562601065691}
   enemyProjectile: {fileID: 2239900642915309621, guid: b9154b096fdf3cf46842389f11760bbe, type: 3}
   fireRate: 2.2
   speed: 1.5
   projectileDamage: 12
+  fleeDistance: 7
+  attackDistance: 12
+  lowHealthPercent: 0.3
   player: {fileID: 0}
   startDelay: 1.5
   audioSource: {fileID: 7071949898057662253}
