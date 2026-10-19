@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject tutorialPanel;
-
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip clickSound;//corto para botones normales
     [SerializeField] private AudioClip playSound;//largo para empzar partidas
@@ -44,16 +41,11 @@ public class Menu : MonoBehaviour
     {
         StartCoroutine(LoadWithSound(clickSound, () => GameManager.Instance.GoToNextLevel()));
     }
-    //para la consiga de agregar tutorial en el menu de inicio
-    public void ShowTutorial()
+
+    //la consigna pide que el boton lleve a una escena nueva con la explicacion
+    public void Tutorial()
     {
-        mainMenuPanel.SetActive(false);
-        tutorialPanel.SetActive(true);
-    }
-    public void HideTutorial()//boton volver del tutorial, deja el menu como estaba
-    {
-        tutorialPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        StartCoroutine(LoadWithSound(clickSound, () => SceneManager.LoadScene("Tutorial")));
     }
 
     //generalize lo q tenia para play nada mas, ahora cualquier boton que cambie de escena pasa por aca, asi no se corta el sonido
