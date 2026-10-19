@@ -192,11 +192,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 7
+  turnSpeed: 600
   firePoint: {fileID: 8083839113678448973}
   projectile1: {fileID: 3953537278196981813, guid: 7b5b4ec2d9b474445a19a9822326d897, type: 3}
   projectile2: {fileID: 3439398924212837277, guid: 33442abca7448104e917b7714f8832f7, type: 3}
   cdProjectile1: 0.45
   cdProjectile2: 1.75
+  aimHoldTime: 0.6
   audioSource: {fileID: 5507304908938753408}
   fireballSounds1:
   - {fileID: 8300000, guid: cc8353fb0281ffa4698dbfe9818e2a43, type: 3}

@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //muchos cambios con el movimiento xq no tengo animacion de "rotar" y queda rara la animacion al girar
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float turnSpeed = 720f;//grados por segundo, mas bajo = giro mas lento
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectile1;
     //aparte de daño y tamaño del projectile 2, debo hacerle otra particularidad
     [SerializeField] private GameObject projectile2;
-    [SerializeField] private float cdProjectile1 = 0.45f;//la consigna del parcial pide minimo .4 de minimo
-    [SerializeField] private float cdProjectile2 = 1.5f;
+    [SerializeField] private float cdProjectile1 = 0.6f;//la consigna del parcial pide minimo .4 de minimo
+    [SerializeField] private float cdProjectile2 = 1.7f;
     private float nextShootProjectile1 = 0f;
     private float nextShootProjectile2 = 0f;
     private Rigidbody rb;
@@ -17,16 +19,19 @@ public class PlayerController : MonoBehaviour
     private Camera mainCam;
     private Animator anim;
 
+    //cuanto tiempo sigue mirando al mouse despues de disparar sino se da vuelta en medio de la animacion
+    [SerializeField] private float aimHoldTime = 0.4f;
+    private float aimUntil = 0f;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] fireballSounds1;//para el disparo 1
-    [SerializeField] private AudioClip[] fireballSounds2;//para el disparo 2
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private AudioClip[] fireballSounds2;//para el disparo2
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        mainCam = Camera.main;//se busca una sola vez en vez de cada frame en Aim()
-        anim = GetComponentInChildren<Animator>();//el animator esta en el hijo draogn, no en el root
+        mainCam = Camera.main;//se busca una sola vez en vez de cada frame
+        anim = GetComponentInChildren<Animator>();//el animator esta en el dragon hijo
     }
     // Update is called once per frame
     void Update()
@@ -35,46 +40,64 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         dir = new Vector3(h, 0f, v).normalized;
-        anim.SetBool("isWalking", dir != Vector3.zero);//anim de caminar basica, luego ver si agregar runnn
+        anim.SetBool("isWalking", dir != Vector3.zero);
 
         //me complique con el temporizador, use el mismo q en enemy
         if (Input.GetMouseButtonDown(0) && Time.time >= nextShootProjectile1)
         {
-            Instantiate(projectile1, firePoint.position, firePoint.rotation);
-            anim.SetTrigger("shoot");//anim disparo igual para los 2 proyectiels, luego veo si agrego otra anim mas lenta
-            audioSource.PlayOneShot(fireballSounds1[Random.Range(0, fireballSounds1.Length)]);
+            Shoot(projectile1, fireballSounds1);
             nextShootProjectile1 = Time.time + cdProjectile1;
         }
-            
-        if (Input.GetMouseButtonDown(1)&& Time.time >= nextShootProjectile2)
+
+        if (Input.GetMouseButtonDown(1) && Time.time >= nextShootProjectile2)
         {
-            Instantiate(projectile2, firePoint.position, firePoint.rotation);
-            anim.SetTrigger("shoot");
-            audioSource.PlayOneShot(fireballSounds2[Random.Range(0, fireballSounds2.Length)]);
+            Shoot(projectile2, fireballSounds2);
             nextShootProjectile2 = Time.time + cdProjectile2;
         }
 
         rb.linearVelocity = new Vector3(dir.x * speed, rb.linearVelocity.y, dir.z * speed);
 
-        if (dir != Vector3.zero)
-            transform.forward = dir;
-
-        Aim();
+        //recien disparo o estoy quieto: mira al mouse. caminando: mira hacia donde va
+        //antes siempre miraba al mouse y caminar de costado se veia raro
+        if (dir == Vector3.zero || Time.time < aimUntil)
+            TurnTowards(GetAimDir());
+        else
+            TurnTowards(dir);
     }
+
+    void Shoot(GameObject projectile, AudioClip[] sounds)
+    {
+        //al disparar gira de golpe, sino la bala sale hacia donde miraba antes
+        Vector3 aimDir = GetAimDir();
+        if (aimDir != Vector3.zero)
+            transform.forward = aimDir;
+
+        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        audioSource.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
+        anim.SetTrigger("shoot");
+        aimUntil = Time.time + aimHoldTime;
+    }
+
+    //gira de a poco en vez de pegar el volantazo
+    void TurnTowards(Vector3 lookDir)
+    {
+        if (lookDir == Vector3.zero) return;
+        Quaternion target = Quaternion.LookRotation(lookDir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnSpeed * Time.deltaTime);
+    }
+
     //para que apunte directamente al puntero, se sentia muy tosco el disparo antes
-    void Aim()
+    Vector3 GetAimDir()
     {
         Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, Vector3.zero);
 
         if (ground.Raycast(ray, out float dist))
         {
-            Vector3 point = ray.GetPoint(dist);
-            Vector3 lookDir = point - transform.position;
+            Vector3 lookDir = ray.GetPoint(dist) - transform.position;
             lookDir.y = 0f;
-
-            if (lookDir != Vector3.zero)
-                transform.forward = lookDir;
+            return lookDir;
         }
+        return Vector3.zero;
     }
 }
