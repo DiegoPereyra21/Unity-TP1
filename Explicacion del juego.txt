@@ -1,0 +1,37 @@
+NOMBRE DEL JUEGO: Last Round
+ALUMNO: Diego Román Pereyra
+
+DESCRIPCION
+Juego 3D de Accion. Donde controlas a un dragón teniendo que sobrevivir en 3 niveles contra dragones con distintos comportamientos. 
+
+CONTROLES
+WASD/Flechas: mover 
+Mouse: apuntar
+Clic izquierdo: disparo 1 (rápido, 20 de daño)
+Clic derecho: disparo 2 (lento, 50 de daño)
+Esc / botón de pausa Superior: pausa
+
+FLUJO DEL JUEGO
+Menú ->Nivel 1 ->Nivel 2 -> Nivel 3 ->pantalla de victoria final -> Menú
+Ganar un nivel: eliminar a todos los enemigos. 
+Perder un nivel: morir, con la posibilidad de reintentar o volver al menú.
+
+El menú tiene un botón Tutorial que lleva a una escena con la explicación.
+
+ENEMIGOS
+- Estatico: solo dispara desde su lugar.
+- Seeker (Con IA de movimiento): NavMeshAgent que permite perseguir esquivando obstáculos.
+- Fear (con IA de decision): maquina de estados simple con Chase/Attack/Flee segun distancia y su vida intentara huir.
+- Random: se mueve en direcciones aleatorias.
+
+SCRIPTS PRINCIPALES
+Movement.cs (jugador), Health.cs (vida y muerte para todos), Projectile.cs y sus variantes (balas, hay diferentes),
+ Enemy.cs y la variante de cada enemigo (IA de cada enemigo), GameManager.cs (singleton que gestiona niveles y victoria oderrota),
+ LevelConfig.cs (para saber cuantos enemigos para pasar de nivel y si es el ultimo nivel), HUD.cs, Pause.cs, Menu.cs.
+
+ANIMACIONES
+Idle, Walk, Run, Shoot y Die con un Animator Controller compartido entre los dragones,
+ hice un animator override para que el player pueda tener la animacion de run sin tener que hacer mas lio en el animator ni crear otro).
+
+NOTAS
+Consola: informacion de todo el daño, vida actual, enemigo eliminado con su nombre y notificacion de Game Over.

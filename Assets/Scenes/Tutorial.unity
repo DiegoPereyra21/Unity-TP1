@@ -714,8 +714,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e03059fe814d4b347b5b63c9e4840ecd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.095
-  m_Pitch: 1
+  m_Volume: 0.054
+  m_Pitch: 0.71
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -1851,8 +1851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8682a8bd31b96234e9f8b7c9a9350676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  mainMenuPanel: {fileID: 0}
-  tutorialPanel: {fileID: 1155823099}
   audioSource: {fileID: 1679087006}
   clickSound: {fileID: 8300000, guid: 8e258a2a0c7089b4aa730506406c2cf5, type: 3}
   playSound: {fileID: 8300000, guid: 412c45e63945e974da45c0823c93b233, type: 3}
