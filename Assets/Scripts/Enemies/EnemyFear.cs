@@ -20,6 +20,7 @@ public class EnemyFear : MonoBehaviour
     [SerializeField] private float startDelay = 1.5f;//necesario para q no dispare apenas spawnea
     private float nextFire;
     private Health health;
+    private Animator anim;
     //para el sonido de la bola de fuego
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] fireballSounds;//f1,f2,f3, uno al azar por disparo para que no suene repetitivo
@@ -27,8 +28,9 @@ public class EnemyFear : MonoBehaviour
     void Start()
     {
         health = GetComponent<Health>();
+        anim = GetComponentInChildren<Animator>();//el animator esta en el dragon hijo
         //seguridad x si me olvidee algo
-        if (player == null || firePoint == null || enemyProjectile == null || health == null)
+        if (player == null || firePoint == null || enemyProjectile == null || health == null || anim == null)
         {
             Debug.LogWarning(name + " faltan referencias");
             enabled = false;
@@ -70,6 +72,8 @@ public class EnemyFear : MonoBehaviour
     //la "accion" por ese estado
     void Act()
     {
+        anim.SetBool("isWalking", currentState != State.Attack);//en Attack se queda quieto
+
         switch (currentState)
         {
             case State.Chase://lejos = se acerca sin disparar
@@ -93,6 +97,7 @@ public class EnemyFear : MonoBehaviour
         if (Time.time < nextFire) return;
 
         GameObject projectile = Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
+        anim.SetTrigger("shoot");//anim isparo
         //para la consigan de progresion, q haga mas daño luego de cada lvl
         projectile.GetComponent<ProjectileEnemy>().SetDamage(projectileDamage);
         audioSource.PlayOneShot(fireballSounds[Random.Range(0, fireballSounds.Length)]);//sonido de la bola de fuego

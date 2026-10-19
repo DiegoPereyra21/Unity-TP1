@@ -194,7 +194,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
+  deathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
 --- !u!114 &-2500358852244144848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9590000, guid: 36c38a65d57de7d4a9a582f9ee857701, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3fdd400f3b717f24fb06cd82fa65d648, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

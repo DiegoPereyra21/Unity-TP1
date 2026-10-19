@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int currentLevelIndex;
     private float timer = 0f;
     private bool levelEnded = false;//para que no se cargue la escena dos veces si pasa algo el mismo frame(muere 2 enemigos al mismo tiemepo o algo raro)
+    [SerializeField] private float endDelay = 1.5f;//espera para que se vea la animacion de muerte antes de cambiar a escena loose
 
     void Awake()
     {
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
         {
             levelEnded = true;
             Debug.Log("VICTORIA EN " + timer.ToString());
-            win();
+            Invoke(nameof(win), endDelay);//ya no es solo win(), necesita el delay
         }
     }
 
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (levelEnded) return;
         levelEnded = true;
         Debug.Log("TIEMPO QUE SOBREVIVISTE: " + timer.ToString());
-        lose();
+        Invoke(nameof(lose), endDelay);//lo mismo, necesita delay para q se vea la anim
     }
 
     void win()

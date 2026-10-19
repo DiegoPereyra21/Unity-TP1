@@ -18,6 +18,8 @@ public class EnemySeeker : MonoBehaviour
     [SerializeField] private Transform player;
     private float nextFire;
     private NavMeshAgent agent;
+    private Animator anim;
+
     //para el sonido de la bola de fuego
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] fireballSounds;//f1,f2,f3, uno al azar por disparo para que no suene repetitivo
@@ -25,8 +27,9 @@ public class EnemySeeker : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();//el animator esta en el dragon hijo
         //seguridad x si me olvidode algo
-        if (player == null || firePoint == null || enemyProjectile == null)
+        if (player == null || firePoint == null || enemyProjectile == null || anim == null)
         {
             Debug.LogWarning(name + " faltan referencias");
             enabled = false;
@@ -50,6 +53,7 @@ public class EnemySeeker : MonoBehaviour
         if (agent.isOnNavMesh)
             agent.SetDestination(player.position);
 
+        anim.SetBool("isWalking", agent.velocity.magnitude > 0.1f);//camina solo si el agente se esta moviendo
         //mira al player pero sin inclinarse si hay diferencia de altura
         Vector3 lookPos = player.position;
         lookPos.y = transform.position.y;
@@ -65,6 +69,7 @@ public class EnemySeeker : MonoBehaviour
     void Shoot()
     {
         GameObject projectile = Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
+        anim.SetTrigger("shoot");
         projectile.GetComponent<ProjectileEnemy>().SetDamage(projectileDamage);
         audioSource.PlayOneShot(fireballSounds[Random.Range(0, fireballSounds.Length)]);//sonido de la bola de fuego
     }

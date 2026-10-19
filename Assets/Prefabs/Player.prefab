@@ -219,6 +219,7 @@ MonoBehaviour:
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
   deathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
+  deathDelay: 1.5
 --- !u!82 &5507304908938753408
 AudioSource:
   m_ObjectHideFlags: 0
@@ -460,8 +461,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9520220, guid: 88e480c990c9d6a458b5fc85fe1da2aa, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9520220, guid: 88e480c990c9d6a458b5fc85fe1da2aa, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 70310a0071c50c44da40a14b8219d32d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

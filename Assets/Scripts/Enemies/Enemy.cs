@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float projectileDamage = 12f;
     [SerializeField] private Transform player;
     private float nextFire;
+    private Animator anim;
 
     //para el sonido de la bola de fuego
     [SerializeField] private AudioSource audioSource;
@@ -17,8 +18,9 @@ public class EnemyController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();//el animator esta en el dragon hijo
         //seguridad x si nos olvidamos algo
-        if (player == null || firePoint == null || enemyProjectile == null)
+        if (player == null || firePoint == null || enemyProjectile == null || anim == null)
         {
             Debug.LogWarning(name + " faltan referencias");
             enabled = false;
@@ -37,6 +39,7 @@ public class EnemyController : MonoBehaviour
         if (Time.time >= nextFire)
         {
             GameObject Projectile = Instantiate(enemyProjectile, firePoint.position, firePoint.rotation);
+            anim.SetTrigger("shoot");
             //para la consigna de que tengan mas daño segun el nivel, hasta ahora solo cambiaba el firerate pero no esta en la consigna
             Projectile.GetComponent<ProjectileEnemy>().SetDamage(projectileDamage);
             audioSource.PlayOneShot(fireballSounds[Random.Range(0, fireballSounds.Length)]);//sonido de la bola de fuego

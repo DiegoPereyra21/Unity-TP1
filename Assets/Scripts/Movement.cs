@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 dir;
     private Camera mainCam;
+    private Animator anim;
+
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] fireballSounds1;//para el disparo 1
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         mainCam = Camera.main;//se busca una sola vez en vez de cada frame en Aim()
+        anim = GetComponentInChildren<Animator>();//el animator esta en el hijo draogn, no en el root
     }
     // Update is called once per frame
     void Update()
@@ -32,11 +35,13 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         dir = new Vector3(h, 0f, v).normalized;
+        anim.SetBool("isWalking", dir != Vector3.zero);//anim de caminar basica, luego ver si agregar runnn
 
         //me complique con el temporizador, use el mismo q en enemy
         if (Input.GetMouseButtonDown(0) && Time.time >= nextShootProjectile1)
         {
             Instantiate(projectile1, firePoint.position, firePoint.rotation);
+            anim.SetTrigger("shoot");//anim disparo igual para los 2 proyectiels, luego veo si agrego otra anim mas lenta
             audioSource.PlayOneShot(fireballSounds1[Random.Range(0, fireballSounds1.Length)]);
             nextShootProjectile1 = Time.time + cdProjectile1;
         }
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1)&& Time.time >= nextShootProjectile2)
         {
             Instantiate(projectile2, firePoint.position, firePoint.rotation);
+            anim.SetTrigger("shoot");
             audioSource.PlayOneShot(fireballSounds2[Random.Range(0, fireballSounds2.Length)]);
             nextShootProjectile2 = Time.time + cdProjectile2;
         }

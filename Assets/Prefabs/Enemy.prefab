@@ -216,7 +216,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   hitSound: {fileID: 8300000, guid: 7f18da175a04b3b4cbbafe2d06d00a1f, type: 3}
-  enemyDeathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
+  deathSound: {fileID: 8300000, guid: fbad1351c288f284d9b87efb93975a57, type: 3}
 --- !u!82 &2149680607264390953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9585228, guid: 70f277dcf2cdfdd4db7ee0ca76e07767, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3fdd400f3b717f24fb06cd82fa65d648, type: 2}
     - target: {fileID: 13765966, guid: 70f277dcf2cdfdd4db7ee0ca76e07767, type: 3}
       propertyPath: m_Enabled
       value: 1
